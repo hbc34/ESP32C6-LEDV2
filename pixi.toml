@@ -1,0 +1,20 @@
+[workspace]
+name = "esp32c6-ledv2"
+channels = ["conda-forge"]
+platforms = ["win-64"]
+
+[dependencies]
+ccache = "*"
+gcc = "*"
+git = "*"
+just = "*"
+pip = "*"
+python = "*"
+pyserial = "*"
+
+[activation.env]
+ESP_IDF_DEFAULT_TARGET = "esp32c6"
+
+[tasks.just]
+description = "Run the project's justfile inside the pixi-managed Python/just environment."
+cmd = "just"

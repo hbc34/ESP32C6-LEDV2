@@ -33,7 +33,7 @@ void bat_adc_init(void)
     ESP_ERROR_CHECK(adc_oneshot_new_unit(&init_cfg, &g_adc_handle));
 
     adc_oneshot_chan_cfg_t chan_cfg = {
-        .atten = ADC_ATTEN_DB_11,
+        .atten = ADC_ATTEN_DB_12,
         .bitwidth = ADC_BITWIDTH_DEFAULT,
     };
     ESP_ERROR_CHECK(adc_oneshot_config_channel(g_adc_handle, g_bat_adc_channel, &chan_cfg));
@@ -42,7 +42,7 @@ void bat_adc_init(void)
     adc_cali_curve_fitting_config_t cali_cfg = {
         .unit_id = g_bat_adc_unit,
         .chan = g_bat_adc_channel,
-        .atten = ADC_ATTEN_DB_11,
+        .atten = ADC_ATTEN_DB_12,
         .bitwidth = ADC_BITWIDTH_DEFAULT,
     };
     if (adc_cali_create_scheme_curve_fitting(&cali_cfg, &g_adc_cali_handle) == ESP_OK)
@@ -53,7 +53,7 @@ void bat_adc_init(void)
     adc_cali_line_fitting_config_t cali_cfg = {
         .unit_id = g_bat_adc_unit,
         .chan = g_bat_adc_channel,
-        .atten = ADC_ATTEN_DB_11,
+        .atten = ADC_ATTEN_DB_12,
         .bitwidth = ADC_BITWIDTH_DEFAULT,
     };
     if (adc_cali_create_scheme_line_fitting(&cali_cfg, &g_adc_cali_handle) == ESP_OK)
